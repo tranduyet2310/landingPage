@@ -14,7 +14,7 @@ const Testimonials = () => {
 
             <div className="row">
                 <div className="col-twelve">
-                    <h1 className="intro-header aos-init aos-animate" data-aos="fade-up">What They Say About Our App.</h1>
+                    <h1 className="intro-header aos-init aos-animate" data-aos="fade-up">Khách hàng nói gì về chúng tôi.</h1>
                 </div>   		
             </div>   	
 
@@ -24,19 +24,22 @@ const Testimonials = () => {
 
                     <div className="slides owl-carousel owl-loaded owl-drag">
                         
-                        <div className="owl-stage-outer owl-height" style={isActive ? {height: "515px"} : {height: "467px"}}>
+                        <div className="owl-stage-outer owl-height" style={isActive ? {height: "515px"} : {height: "580px"}}>
                             <div className="owl-stage" 
                                 style={isActive ? 
                                         {transform: 'translate3d(-1800px, 0px, 0px)', transition: 'all 0.25s ease 0s', width: '5400px'} : 
                                         {transform: 'translate3d(-2700px, 0px, 0px)', transition: 'all 0.25s ease 0s', width: '5400px'}}>
                                 <div className="owl-item cloned" style={{width: "900px"}}>
                                     <div>
-                                        <p> Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.</p> 
+                                        <p>
+                                            Ứng dụng dễ sử dụng, đơn giản và dễ thao tác. Giao hàng nhanh và sản phẩm đúng với chất lượng như mô tả. Đặc biệt rất tiện lợi trong việc có thể đặt trước số lượng sản phẩm cần, trước khi tới thời điểm thu hoạch với nhà cung cấp, vừa đảm sản phẩm tươi lại có giá rẻ hơn.
+                                        </p> 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user-02.jpg" alt="Author image"/>
+                                            <img src="./public/images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                Steve Jobs
-                                                <span className="position">CEO, Apple.</span>
+                                                Nguyễn Thị Trúc Nhi{
+                                                    <span className="position">Người dùng.</span>
+                                                }
                                             </div>
                                         </div>                 
                                     </div>
@@ -45,14 +48,15 @@ const Testimonials = () => {
                                 <div className="owl-item cloned" style={{width: "900px"}}>
                                     <div>
                                         <p>
-                                            This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.    
+                                            Bán hàng trên AgriMart giúp tôi dễ tiếp cận với khách hàng hơn. Thay vì chỉ bán cho các thương lái hoặc mang ra các chợ truyền thống, thì việc sử dụng ứng dụng để giới thiệu và quảng bá sản phẩm có thể thực hiện trước khi đến thời điểm thu hoạch. Khi đến lúc thu hoạch thì xác định được đầu ra ngay mà không phải loay hoay tìm kiếm các kênh để bán. Vừa giúp giảm chi phí bảo quản, lại đảm bảo chất lượng sản phẩm khi đến tay khách hàng.    
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user-03.jpg" alt="Author image"/>
+                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                John Doe
-                                                <span>CEO, ABC Corp.</span>
+                                                Trần Thế Duyệt{
+                                                    <span>Nhà cung cấp</span>
+                                                }
                                             </div>
                                         </div>                                         
                                     </div>
@@ -61,14 +65,15 @@ const Testimonials = () => {
                                 <div className={isActive ? "owl-item" : "owl-item active"} style={{width: "900px"}}>
                                     <div>
                                         <p>
-                                            Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.
+                                            Ứng dụng dễ sử dụng, đơn giản và dễ thao tác. Giao hàng nhanh và sản phẩm đúng với chất lượng như mô tả. Đặc biệt rất tiện lợi trong việc có thể đặt trước số lượng sản phẩm cần, trước khi tới thời điểm thu hoạch với nhà cung cấp, vừa đảm sản phẩm tươi lại có giá rẻ hơn.
                                         </p> 
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user-02.jpg" alt="Author image"/>
+                                            <img src="./public/images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                Steve Jobs
-                                                <span className="position">CEO, Apple.</span>
+                                               Nguyễn Thị Trúc Nhi{
+                                                    <span className="position">Người dùng.</span>
+                                                }
                                             </div>
                                         </div>                 
                                     </div>
@@ -77,14 +82,15 @@ const Testimonials = () => {
                                 <div className={isActive ? "owl-item active" : "owl-item"} style={{width: "900px"}}>
                                     <div>
                                         <p> 
-                                            This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.    
+                                            Bán hàng trên AgriMart giúp tôi dễ tiếp cận với khách hàng hơn. Thay vì chỉ bán cho các thương lái hoặc mang ra các chợ truyền thống, thì việc sử dụng ứng dụng để giới thiệu và quảng bá sản phẩm có thể thực hiện trước khi đến thời điểm thu hoạch. Khi đến lúc thu hoạch thì xác định được đầu ra ngay mà không phải loay hoay tìm kiếm các kênh để bán. Vừa giúp giảm chi phí bảo quản, lại đảm bảo chất lượng sản phẩm khi đến tay khách hàng.    
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user-03.jpg" alt="Author image"/>
+                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                John Doe
-                                                <span>CEO, ABC Corp.</span>
+                                                Trần Thế Duyệt{
+                                                    <span>Nhà cung cấp</span>
+                                                }
                                             </div>
                                         </div>                                         
                                     </div>
@@ -93,14 +99,15 @@ const Testimonials = () => {
                                 <div className="owl-item cloned" style={{width: "900px"}}>
                                     <div>
                                         <p>
-                                            Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.
+                                            Ứng dụng dễ sử dụng, đơn giản và dễ thao tác. Giao hàng nhanh và sản phẩm đúng với chất lượng như mô tả. Đặc biệt rất tiện lợi trong việc có thể đặt trước số lượng sản phẩm cần, trước khi tới thời điểm thu hoạch với nhà cung cấp, vừa đảm sản phẩm tươi lại có giá rẻ hơn.
                                         </p> 
 
                                         <div className="testimonial-author">
-                                            <img src=".public/images/avatars/user-02.jpg" alt="Author image"/>
+                                            <img src=".public/images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                Steve Jobs
-                                                <span className="position">CEO, Apple.</span>
+                                               Nguyễn Thị Trúc Nhi{
+                                                    <span className="position">Người dùng.</span>
+                                                }
                                             </div>
                                         </div>                 
                                     </div>
@@ -110,14 +117,15 @@ const Testimonials = () => {
                                 
                                     <div>
                                         <p>
-                                            This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.    
+                                            Bán hàng trên AgriMart giúp tôi dễ tiếp cận với khách hàng hơn. Thay vì chỉ bán cho các thương lái hoặc mang ra các chợ truyền thống, thì việc sử dụng ứng dụng để giới thiệu và quảng bá sản phẩm có thể thực hiện trước khi đến thời điểm thu hoạch. Khi đến lúc thu hoạch thì xác định được đầu ra ngay mà không phải loay hoay tìm kiếm các kênh để bán. Vừa giúp giảm chi phí bảo quản, lại đảm bảo chất lượng sản phẩm khi đến tay khách hàng.    
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user-03.jpg" alt="Author image"/>
+                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
-                                                John Doe
-                                                <span>CEO, ABC Corp.</span>
+                                                Trần Thế Duyệt{
+                                                    <span>Nhà cung cấp</span>
+                                                }
                                             </div>
                                         </div>                                         
                                     </div>

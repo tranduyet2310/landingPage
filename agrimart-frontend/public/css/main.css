@@ -1158,10 +1158,10 @@ h1.intro-header::before {
   padding: 0;
   outline: 0;
   border: none;
-  width: 97px;
+  width: 130px;
   height: 22px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 97px 22px;
+  background: url("../images/agrimart_logo.png") no-repeat center;
+  background-size: 130px 22px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -2618,10 +2618,10 @@ footer ul a:visited {
   padding: 0;
   outline: 0;
   border: none;
-  width: 93px;
+  width: 130px;
   height: 21px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 93px 21px;
+  background: url("../images/agrimart_logo.png") no-repeat center;
+  background-size: 130px 21px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;

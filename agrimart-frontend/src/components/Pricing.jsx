@@ -8,12 +8,11 @@ const Pricing = () => {
             <div className="row pricing-content">
 
                 <div className="col-four pricing-intro">
-                    <h1 className="intro-header" data-aos="fade-up">Our Pricing Options</h1>
+                    <h1 className="intro-header" data-aos="fade-up">Bán hàng với AgriMart</h1>
 
-                    <p data-aos="fade-up">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium.
+                    <p data-aos="fade-up">
+                        AgriMart cung cấp miễn phí toàn bộ các phần mềm quản lí kho hàng, quản lí sản phẩm, quản lý đơn hàng v.v.. cho các Nhà cung cấp khi tham gia bán hàng trên sàn. <br/>
+                        Miễn phí toàn bộ các loại phí cho các Nhà cung cấp khi tham gia bán hàng trên sàn. Bao gồm cả phí marketing.
                     </p>
                 </div>
 
@@ -24,21 +23,20 @@ const Pricing = () => {
                             <div className="plan-block" data-aos="fade-up">
 
                                 <div className="plan-top-part">
-                                    <h3 className="plan-block-title">Lite Plan</h3>
-                                    <p className="plan-block-price"><sup>$</sup>25</p>
-                                    <p className="plan-block-per">Per Month</p>
+                                    <h3 className="plan-block-title">Hỗ trợ công nghệ</h3>
+                        
+                                    <p className="plan-block-per">Hoàn toàn miễn phí</p>
                                 </div>
 
                                 <div className="plan-bottom-part">  
 
                                     <ul className="plan-block-features">
-                                        <li><span>3GB</span> Storage</li>
-                                        <li><span>10GB</span> Bandwidth</li>
-                                        <li><span>5</span> Databases</li>
-                                        <li><span>30</span> Email Accounts</li>
+                                        <li>Đội ngũ nhân viên hỗ trợ <span>24/7</span></li>
+                                        <li>Tài liệu hướng dẫn bài bản từ cơ bản tới nâng cao</li>
+                                        <li>Cung cấp tiện ích bán hàng chuyên nghiệp</li>
+                                        <li>Quảng bá sản phẩm-truyền thông số</li>
+                                        <li>Hỗ trợ vận chuyển, lưu trữ chuyên dụng</li>
                                     </ul>
-
-                                    <a className="button button-primary large" href="">Get Started</a>
                                 </div>
 
                             </div>
@@ -48,20 +46,18 @@ const Pricing = () => {
                             <div className="plan-block primary" data-aos="fade-up">
 
                                 <div className="plan-top-part">
-                                    <h3 className="plan-block-title">Pro Plan</h3>
-                                    <p className="plan-block-price"><sup>$</sup>50</p>
-                                    <p className="plan-block-per">Per Month</p>
+                                    <h3 className="plan-block-title">Chuyển đổi số</h3>
+                                    <p className="plan-block-per">Đơn giản, tiện lợi</p>
                                 </div>
 
                                 <div className="plan-bottom-part">
                                     <ul className="plan-block-features">
-                                        <li><span>5GB</span> Storage</li>
-                                        <li><span>20GB</span> Bandwidth</li>
-                                        <li><span>15</span> Databases</li>
-                                        <li><span>70</span> Email Accounts</li>
+                                        <li>Mở rộng kênh bán hàng</li>
+                                        <li>Kết nối thanh toán hiện đại, thanh khoản linh hoạt</li>
+                                        <li>Chiết khấu cho mọi nhà cung cấp</li>
+                                        <li>Tặng <span>100%</span> phí khởi tạo gian hàng</li>
+                                        <li>Cơ sở dữ liệu cập nhật, an toàn, truy xuất thông tin</li>
                                     </ul>
-
-                                    <a className="button button-primary large" href="">Get Started</a>
                                 </div>
 
                             </div>

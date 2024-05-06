@@ -12,7 +12,7 @@ const Footer = () => {
 
                         <div className="footer-logo"></div>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+                        <p>Hệ sinh thái nông nghiệp ứng dụng công nghệ. Mang nông sản xanh, sạch với giá hợp lý đến mọi người</p>
 
                         <ul className="footer-social-list">
                             <li>
@@ -37,18 +37,18 @@ const Footer = () => {
 
                     <div className="col-three md-1-3 tab-1-2 mob-full footer-contact">
 
-                        <h4>Contact</h4>
+                        <h4>Liên hệ</h4>
 
                         <p>
-                            1600 Amphitheatre Parkway<br/>
-                            Mountain View, CA <br/>
-                            94043 US<br/>
+                            141 đường Chiến Thắng<br/>
+                            xã Tân Triều, huyện Thanh Trì <br/>
+                            thành phố Hà Nội, Việt Nam<br/>
                         </p>
 
                         <p>
-                            someone@dazzlesite.com <br/>
-                            Phone: (+63) 555 1212 <br/>
-                            Fax: (+63) 555 0100
+                            agrimart@gmail.com <br/>
+                            Phone: (+84) 0999 999 999 <br/>
+                            Fax: (+84) 123 4567
                         </p>
 
                     </div> 
@@ -70,15 +70,15 @@ const Footer = () => {
 
                     <div className="col-four md-1-2 tab-full footer-subscribe">
 
-                        <h4>Our Newsletter</h4>
+                        <h4>Nhận thông báo</h4>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</p>
+                        <p>Nhận thông báo về các chương trình khuyến mãi đặc biệt và bản cập nhật mới nhất của ứng dụng sớm nhất.</p>
 
                         <div className="subscribe-form">
 
                             <form id="mc-form" className="group" noValidate>
 
-                                <input type="email" defaultValue="" name="EMAIL" className="email" id="mc-email" placeholder="Email Address" required=""/>
+                                <input type="email" defaultValue="" name="EMAIL" className="email" id="mc-email" placeholder="Địa chỉ email" required=""/>
 
                                 <input type="submit" name="subscribe" defaultValue="Send"/>
 
@@ -100,8 +100,8 @@ const Footer = () => {
 
                     <div className="col-twelve">
                         <div className="copyright">
-                            <span>© Copyright Dazzle 2018.</span>
-                            <span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+                            <span>© Bản quyền thuộc về AgriMart 2024.</span>
+                            <span>Thiết kế bởi <a href="http://www.styleshout.com/">styleshout</a></span>
                         </div>
 
                         <div id="go-top" style={{ display: "block" }}>
