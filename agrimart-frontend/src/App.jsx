@@ -1,29 +1,19 @@
 import './App.css'
-import About from './components/About'
-import Download from './components/Download'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Home from './components/Home'
-import Preloader from './components/PreLoader'
-import Pricing from './components/Pricing'
-import Testimonials from './components/Testimonials'
-
-import ListEmployeeComponent from './components/ListEmployeeComponent'
-
+import PublicPage from './components/PublicPage'
+import ListEmployeeComponent from './components/admin/ListEmployeeComponent'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
 
   return (
-    <>
-      <Header/>
-      <Home/>
-      <About/>
-      <Pricing/>
-      <Testimonials/>
-      <Download/>
-      <Footer/>
-      <Preloader/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element = {<PublicPage/>}/>
+        <Route path='/admin' element = {<ListEmployeeComponent/>}/>
+        <Route path='/login' element = {<ListEmployeeComponent/>}/>
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 

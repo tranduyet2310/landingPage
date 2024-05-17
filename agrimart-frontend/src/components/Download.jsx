@@ -6,7 +6,7 @@ const Download = () => {
 
         <section id="download">
 
-            <div className="row">
+            <div className="public-row">
                 <div className="col-full">
                     <h1 className="intro-header" data-aos="fade-up">Tải ứng dụng của chúng tôi ngay hôm nay!</h1>
 

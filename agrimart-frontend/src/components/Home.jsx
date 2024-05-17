@@ -8,7 +8,7 @@ const Home = () => {
             <div className="overlay"></div>
             <div className="home-content">        
 
-                <div className="row contents">                     
+                <div className="public-row contents">                     
                     <div className="home-content-left">
 
                         <h3 data-aos="fade-up">Chào mừng tới AgriMart</h3>
@@ -44,16 +44,16 @@ const Home = () => {
 
             <ul className="home-social-list">
                 <li>
-                    <a href="#"><i className="fa fa-facebook-square"></i></a>
+                    <a href="/"><i className="fa fa-facebook-square"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i className="fa fa-twitter"></i></a>
+                    <a href="/"><i className="fa fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i className="fa fa-instagram"></i></a>
+                    <a href="/"><i className="fa fa-instagram"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i className="fa fa-youtube-play"></i></a>
+                    <a href="/"><i className="fa fa-youtube-play"></i></a>
                 </li>
             </ul>
 

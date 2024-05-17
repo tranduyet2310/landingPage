@@ -5,7 +5,7 @@ const Pricing = () => {
     <div>
 
         <section id="pricing">
-            <div className="row pricing-content">
+            <div className="public-row pricing-content">
 
                 <div className="col-four pricing-intro">
                     <h1 className="intro-header" data-aos="fade-up">Bán hàng với AgriMart</h1>
@@ -17,7 +17,7 @@ const Pricing = () => {
                 </div>
 
                 <div className="col-eight pricing-table">
-                    <div className="row">
+                    <div className="public-row">
 
                         <div className="col-six plan-wrap">
                             <div className="plan-block" data-aos="fade-up">

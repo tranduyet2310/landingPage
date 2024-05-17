@@ -6,7 +6,7 @@ const Footer = () => {
         <footer>
 
             <div className="footer-main">
-                <div className="row">
+                <div className="public-row">
 
                     <div className="col-three md-1-3 tab-full footer-info">
 
@@ -16,19 +16,19 @@ const Footer = () => {
 
                         <ul className="footer-social-list">
                             <li>
-                                <a href="#"><i className="fa fa-facebook-square"></i></a>
+                                <a href="/"><i className="fa fa-facebook-square"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fa fa-twitter"></i></a>
+                                <a href="/"><i className="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fa fa-behance"></i></a>
+                                <a href="/"><i className="fa fa-behance"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fa fa-dribbble"></i></a>
+                                <a href="/"><i className="fa fa-dribbble"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i className="fa fa-instagram"></i></a>
+                                <a href="/"><i className="fa fa-instagram"></i></a>
                             </li>
                         </ul>
 
@@ -58,12 +58,12 @@ const Footer = () => {
                         <h4>Site Links</h4>
 
                         <ul className="list-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/">About Us</a></li>
+                            <li><a href="/">Blog</a></li>
+                            <li><a href="/">FAQ</a></li>
+                            <li><a href="/">Terms</a></li>
+                            <li><a href="/">Privacy Policy</a></li>
                         </ul>
 
                     </div>
@@ -96,7 +96,7 @@ const Footer = () => {
 
             <div className="footer-bottom">
 
-                <div className="row">
+                <div className="public-row">
 
                     <div className="col-twelve">
                         <div className="copyright">

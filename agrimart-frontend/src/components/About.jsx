@@ -5,7 +5,7 @@ const About = () => {
     <div>
         <section id="about">
 
-            <div className="row about-intro">
+            <div className="public-row about-intro">
 
                 <div className="col-four">
                     <h1 className="intro-header" data-aos="fade-up">Giới thiệu về AgriMart</h1>
@@ -18,7 +18,7 @@ const About = () => {
 
             </div>
 
-            <div className="row about-features">
+            <div className="public-row about-features">
 
                 <div className="features-list block-1-3 block-m-1-2 block-mob-full group">
 
@@ -121,7 +121,7 @@ const About = () => {
 
             </div>
 
-            <div className="row about-how">
+            <div className="public-row about-how">
 
                 <h1 className="intro-header" data-aos="fade-up">Quy trình mua hàng trên App?</h1>
 
@@ -163,7 +163,7 @@ const About = () => {
 
             </div> 
 
-            <div className="row about-bottom-image">
+            <div className="public-row about-bottom-image">
 
                 <img src="./public/images/app-screens-1200v2.png" 
                      srcSet="./public/images/app-screens-600v2.png 600w, 

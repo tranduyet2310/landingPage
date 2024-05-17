@@ -1094,7 +1094,7 @@ h1.intro-header::before {
   max-width: 1300px;
 }
 
-.narrow {
+.narpublic-row {
   max-width: 800px;
 }
 
@@ -2504,7 +2504,7 @@ html[data-useragent*='MSIE 10.0'] .home-scrolldown,
   margin-top: 4.8rem;
 }
 
-#download .row {
+#download .public-row {
   max-width: 800px;
 }
 
@@ -2785,7 +2785,7 @@ footer ul a:visited {
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 1024px) {
-  .footer-main>.row {
+  .footer-main>.public-row {
     max-width: 800px;
   }
   .footer-info,
@@ -2799,7 +2799,7 @@ footer ul a:visited {
 }
 
 @media only screen and (max-width: 768px) {
-  .footer-main>.row {
+  .footer-main>.public-row {
     max-width: 600px;
   }
   .footer-logo {
@@ -2820,7 +2820,7 @@ footer ul a:visited {
 }
 
 @media only screen and (max-width: 600px) {
-  .footer-main .row {
+  .footer-main .public-row {
     max-width: 480px;
   }
   .footer-main h4 {

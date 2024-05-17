@@ -12,13 +12,13 @@ const Testimonials = () => {
     <div>
         <section id="testimonials">
 
-            <div className="row">
+            <div className="public-row">
                 <div className="col-twelve">
                     <h1 className="intro-header aos-init aos-animate" data-aos="fade-up">Khách hàng nói gì về chúng tôi.</h1>
                 </div>   		
             </div>   	
 
-            <div className="row owl-wrap">
+            <div className="public-row owl-wrap">
 
                 <div id="testimonial-slider" data-aos="fade-up" className="aos-init aos-animate">
 

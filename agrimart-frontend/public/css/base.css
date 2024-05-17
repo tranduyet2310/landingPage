@@ -393,19 +393,19 @@ textarea {
  *
  * ------------------------------------------------------------------- */
 
-.row {
+.public-row {
   width: 94%;
   max-width: 1170px;
   margin: 0 auto;
 }
 
-.row:after {
+.public-row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.row .row {
+.public-row .public-row {
   width: auto;
   max-width: none;
   margin-left: -20px;
@@ -487,7 +487,7 @@ textarea {
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 1024px) {
-  .row .row {
+  .public-row .public-row {
     margin-left: -18px;
     margin-right: -18px;
   }
@@ -546,12 +546,12 @@ textarea {
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 768px) {
-  .row {
+  .public-row {
     width: auto;
     padding-left: 30px;
     padding-right: 30px;
   }
-  .row .row {
+  .public-row .public-row {
     padding-left: 0;
     padding-right: 0;
     margin-left: -15px;
@@ -586,11 +586,11 @@ textarea {
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 600px) {
-  .row {
+  .public-row {
     padding-left: 25px;
     padding-right: 25px;
   }
-  .row .row {
+  .public-row .public-row {
     margin-left: -10px;
     margin-right: -10px;
   }
@@ -623,7 +623,7 @@ textarea {
  * ------------------------------------------------------------------- */
 
 @media only screen and (max-width: 400px) {
-  .row .row {
+  .public-row .public-row {
     padding-left: 0;
     padding-right: 0;
     margin-left: 0;
