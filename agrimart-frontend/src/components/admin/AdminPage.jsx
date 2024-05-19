@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Header from "./Header";
-import TableUsers from "./TableUsers";
 import { Container } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
-import Home from "./Home";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { useContext } from "react";
+import { ToastContainer } from "react-toastify";
+import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 
 const AdminPage = () => {

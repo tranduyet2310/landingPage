@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logoApp from "../../assets/react.svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 const Header = (props) => {

@@ -165,10 +165,10 @@ const About = () => {
 
             <div className="public-row about-bottom-image">
 
-                <img src="./public/images/app-screens-1200v2.png" 
-                     srcSet="./public/images/app-screens-600v2.png 600w, 
-                            ./public/images/app-screens-1200v2.png 1200w, 
-                            ./public/images/app-screens-2800v2.png 2800w" 
+                <img src="images/app-screens-1200v2.png" 
+                     srcSet="images/app-screens-600v2.png 600w, 
+                            images/app-screens-1200v2.png 1200w, 
+                            images/app-screens-2800v2.png 2800w" 
                      sizes="(max-width: 2800px) 100vw, 2800px"
                      alt="App Screenshots" 
                      data-aos="fade-up"/>

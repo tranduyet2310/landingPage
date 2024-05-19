@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { fetchAllUser } from "../../services/UserService";
+import { fetchAllUser } from "../../../services/UserService";
 import ReactPaginate from "react-paginate";
 import ModalAddNew from "./ModalAddNew";
 import ModalEditUser from "./ModalEditUser";
 import _, { debounce } from "lodash";
 import ModalConfirm from "./ModalConfirm";
-import "./TableUsers.scss";
-
+import "../TableUsers.scss";
 
 const TableUsers = (props) => {
   const [listUsers, setListUsers] = useState([]);

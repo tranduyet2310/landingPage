@@ -35,7 +35,7 @@ const Testimonials = () => {
                                             Ứng dụng dễ sử dụng, đơn giản và dễ thao tác. Giao hàng nhanh và sản phẩm đúng với chất lượng như mô tả. Đặc biệt rất tiện lợi trong việc có thể đặt trước số lượng sản phẩm cần, trước khi tới thời điểm thu hoạch với nhà cung cấp, vừa đảm sản phẩm tươi lại có giá rẻ hơn.
                                         </p> 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user_05.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
                                                 Nguyễn Thị Trúc Nhi{
                                                     <span className="position">Người dùng.</span>
@@ -52,7 +52,7 @@ const Testimonials = () => {
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
                                                 Trần Thế Duyệt{
                                                     <span>Nhà cung cấp</span>
@@ -69,7 +69,7 @@ const Testimonials = () => {
                                         </p> 
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user_05.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
                                                Nguyễn Thị Trúc Nhi{
                                                     <span className="position">Người dùng.</span>
@@ -86,7 +86,7 @@ const Testimonials = () => {
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
                                                 Trần Thế Duyệt{
                                                     <span>Nhà cung cấp</span>
@@ -103,7 +103,7 @@ const Testimonials = () => {
                                         </p> 
 
                                         <div className="testimonial-author">
-                                            <img src=".public/images/avatars/user_05.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_05.jpg" alt="Author"/>
                                             <div className="author-info">
                                                Nguyễn Thị Trúc Nhi{
                                                     <span className="position">Người dùng.</span>
@@ -121,7 +121,7 @@ const Testimonials = () => {
                                         </p>
 
                                         <div className="testimonial-author">
-                                            <img src="./public/images/avatars/user_04.jpg" alt="Author"/>
+                                            <img src="images/avatars/user_04.jpg" alt="Author"/>
                                             <div className="author-info">
                                                 Trần Thế Duyệt{
                                                     <span>Nhà cung cấp</span>

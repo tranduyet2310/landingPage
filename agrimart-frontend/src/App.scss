@@ -84,3 +84,40 @@
 .pagination{
     justify-content: center;
 }
+
+.fullscreen-image {
+    height: 100vh;
+    width: inherit;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.text-overlay {
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.custom-button {
+    background-color: white;
+    color: rgb(255, 170, 0);
+    border: none;
+    font-weight: 600;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: #f0f0f0;
+}

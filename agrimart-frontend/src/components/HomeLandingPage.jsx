@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = () => {
+const HomeLandingPage = () => {
   return (
     <div>
         <section id="home">
@@ -34,8 +34,8 @@ const Home = () => {
                     </div>
 
                     <div className="home-image-right">
-                        <img src="./public/images/iphone-app-470v2.png" 
-                             srcSet="./public/images/iphone-app-470v2.png 1x, ./public/images/iphone-app-940v2.png 2x"  
+                        <img src="images/iphone-app-470v2.png" 
+                             srcSet="images/iphone-app-470v2.png 1x, images/iphone-app-940v2.png 2x"  
                              data-aos="fade-up"/>
                     </div>
                 </div>
@@ -70,4 +70,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomeLandingPage;

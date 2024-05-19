@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { loginApi } from "../../services/UserService";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
