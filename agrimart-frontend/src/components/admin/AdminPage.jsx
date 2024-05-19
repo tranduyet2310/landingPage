@@ -1,31 +1,47 @@
-import React, { useState } from 'react'
-import Header from './Header'
-import TableUsers from './TableUsers'
-import { Container } from 'react-bootstrap'
-import ModalAddNew from './ModalAddNew'
+import React, { useEffect } from "react";
+import Header from "./Header";
+import TableUsers from "./TableUsers";
+import { Container } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import Home from "./Home";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const AdminPage = () => {
 
-    const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
+  const { user, loginContext } = useContext(UserContext);
 
-    const handleClose = () => {
-        setIsShowModalAddNew(false);
+  console.log("user context", user)
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      loginContext(localStorage.getItem("email"), localStorage.getItem("token"));
     }
+  }, [])
 
   return (
-    <div className='app-container'>
+    <>
+      <div className="app-container">
         <Header />
         <Container>
-            <div className='my-3 add-new'>
-                <span><b>Danh sach nguoi dung</b></span>
-                <button className='btn btn-primary' onClick={() =>setIsShowModalAddNew(true)}>Them nguoi dung</button>
-            </div>
-            <TableUsers />
+          <Outlet />
         </Container>
-        <ModalAddNew show = {isShowModalAddNew} 
-        handleClose = {handleClose} />
-    </div>
-  )
-}
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
+  );
+};
 
-export default AdminPage
+export default AdminPage;
