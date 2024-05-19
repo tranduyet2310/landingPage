@@ -3,6 +3,7 @@ import { loginApi } from "../../services/UserService";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import { loginUser } from "../../services/LoginService";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,14 +29,14 @@ const Login = () => {
       return;
     }
     setLoadingApi(true);
-    // eve.holt@reqres.in
-    let res = await loginApi(email.trim(), password);
-    if (res && res.data.token) {
-      loginContext(email, res.data.token);
+    let res = await loginUser(email.trim(), password);
+    console.log("check login user ", res)
+    if (res && res.data && res.data.accessToken) {
+      loginContext(email, res.data.accessToken);
       navigate("/admin/home");
     } else {
-      if (res && res.status === 400) {
-        toast.error(res.data.error);
+      if (res && res.status === 500) {
+        toast.error("Email/Password không chính xác");
       }
     }
     setLoadingApi(false);
@@ -48,7 +49,7 @@ const Login = () => {
   return (
     <>
       <div className="login-container col-12 col-sm-4">
-        <div className="title"> Log in</div>
+        <div className="title"> Đăng nhập</div>
         <div className="text">Email or Username</div>
         <input
           type="text"
@@ -79,11 +80,11 @@ const Login = () => {
           onClick={() => handleLogin()}
         >
           {loadingApi && <i className="fa-solid fa-sync fa-spin"></i>}
-          &nbsp; Login
+          &nbsp; Đăng nhập
         </button>
         <div className="back">
           <i className="fa-solid fa-arrow-left"></i>{" "}
-          <span onClick={() => handleGoBack()}> &nbsp;Go back</span>
+          <span onClick={() => handleGoBack()}> &nbsp;Quay về</span>
         </div>
       </div>
     </>

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { fetchAllUser, getAllUsers } from "../../../services/UserService";
 import ReactPaginate from "react-paginate";
-import ModalAddNew from "./ModalAddNew";
-import ModalEditUser from "./ModalEditUser";
 import _, { debounce } from "lodash";
-import ModalConfirm from "./ModalConfirm";
 import "../TableUsers.scss";
+import { getAllSuppliers } from "../../../services/SupplierService";
+import ModalEditSupplier from "./ModalEditSupplier";
+import ModalConfirmSupplier from "./ModalConfirmSupplier";
 
-const TableUsers = (props) => {
+const TableSupplier = (props) => {
   const [listUsers, setListUsers] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -47,12 +46,11 @@ const TableUsers = (props) => {
 
   useEffect(() => {
     // call api
-    getUsers(0);
+    getSuppliers(0);
   }, []);
 
-  const getUsers = async (page) => {
-    // let res = await fetchAllUser(page);
-    let res = await getAllUsers(page);
+  const getSuppliers = async (page) => {
+    let res = await getAllSuppliers(page);
     console.log("getAllUser res", res);
     if (res && res.data && res.data.content) {
       setTotalUsers(res.data.totalElements);
@@ -64,7 +62,7 @@ const TableUsers = (props) => {
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
-    getUsers(+event.selected + 1);
+    getSuppliers(+event.selected + 1);
   };
 
   const handleEditUser = (user) => {
@@ -79,10 +77,7 @@ const TableUsers = (props) => {
   };
 
   const handleDeleteUserFromModal = (user) => {
-    // let cloneListUsers = _.cloneDeep(listUsers);
-    // cloneListUsers = cloneListUsers.filter((item) => item.id !== user.id);
-    // setListUsers(cloneListUsers);
-    getUsers(0);
+    getSuppliers(0);
   };
 
   const handleSort = (sortBy, sortField) => {
@@ -104,28 +99,15 @@ const TableUsers = (props) => {
       );
       setListUsers(cloneListUsers);
     } else {
-      getUsers(0);
+      getSuppliers(0);
     }
   }, 500);
 
   return (
     <>
-      {/* <div className="my-3 add-new d-sm-flex flex-column flex-sm-row">
-        <span>
-          <b>Danh sách người dùng</b>
-        </span>
-        <button
-          className="btn btn-primary mt-3 mt-sm-0 ms-sm-3"
-          onClick={() => setIsShowModalAddNew(true)}
-        >
-          <i class="fa-solid fa-circle-plus"></i>
-          &nbsp; Thêm
-        </button>
-      </div> */}
-
       <div className="my-3 add-new d-flex justify-content-center align-items-center">
         <span style={{ fontSize: "2rem" }}>
-          <b>Danh sách người dùng</b>
+          <b>Danh sách nhà cung cấp</b>
         </span>
       </div>
 
@@ -164,15 +146,16 @@ const TableUsers = (props) => {
                   <span>
                     <i
                       className="fa-solid fa-arrow-down"
-                      onClick={() => handleSort("desc", "fullName")}
+                      onClick={() => handleSort("desc", "contactName")}
                     ></i>
                     <i
                       className="fa-solid fa-arrow-up"
-                      onClick={() => handleSort("asc", "fullName")}
+                      onClick={() => handleSort("asc", "contactName")}
                     ></i>
                   </span>
                 </div>
               </th>
+              <th>Tên cửa hàng</th>
               <th>Số điện thoại</th>
               <th>Thao tác</th>
             </tr>
@@ -185,18 +168,19 @@ const TableUsers = (props) => {
                   <tr key={`user-${index}`}>
                     <td>{item.id}</td>
                     <td>{item.email}</td>
-                    <td>{item.fullName}</td>
+                    <td>{item.contactName}</td>
+                    <td>{item.shopName}</td>
                     <td>{item.phone}</td>
                     <td>
                       <button
                         className="btn btn-warning mx-3"
                         onClick={() => handleEditUser(item)}
                       >
-                        Sửa
+                        Xem
                       </button>
                       <button
                         className={`btn ${
-                          item.status ? "btn-success" : "btn-danger"
+                          item.active ? "btn-success" : "btn-danger"
                         }`}
                         onClick={() => handleDeleteUser(item)}
                       >
@@ -229,20 +213,14 @@ const TableUsers = (props) => {
         activeClassName="active"
       />
 
-      <ModalAddNew
-        show={isShowModalAddNew}
-        handleClose={handleClose}
-        handleUpdateTable={handleUpdateTable}
-      />
-
-      <ModalEditUser
+      <ModalEditSupplier
         show={isShowModalEdit}
         handleClose={handleClose}
         dataUserEdit={dataUserEdit}
         handleEditUserFromModal={handleEditUserFromModal}
       />
 
-      <ModalConfirm
+      <ModalConfirmSupplier
         show={isShowModalDelete}
         handleClose={handleClose}
         dataUserDelete={dataUserDelete}
@@ -252,4 +230,4 @@ const TableUsers = (props) => {
   );
 };
 
-export default TableUsers;
+export default TableSupplier;

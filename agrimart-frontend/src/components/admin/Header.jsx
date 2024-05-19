@@ -44,29 +44,50 @@ const Header = (props) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            {(user && user.auth || window.location.pathname === "/admin/home") && (
+            {((user && user.auth) ||
+              window.location.pathname === "/admin/home") && (
               <>
                 <Nav className="me-auto" activeKey={location.pathname}>
                   <NavLink className="nav-link" to="/admin/home">
-                    Home
+                    Trang chủ
                   </NavLink>
-                  <NavLink className="nav-link" to="/admin/users">
-                    Manage Users
+                  <NavLink className="nav-link" to="/admin/category">
+                    Quản lý danh mục
+                  </NavLink>
+                  <NavDropdown
+                    title="Quản lý tài khoản"
+                    id="basic-nav-dropdown"
+                  >
+                    <NavLink className="dropdown-item" to="/admin/users">
+                      Tài khoản người dùng
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/admin/suppliers">
+                      Tài khoản bán hàng
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/admin/approval">
+                      Phê duyệt
+                    </NavLink>
+                  </NavDropdown>
+                  <NavLink className="nav-link" to="/admin/category">
+                    Quản lý sản phẩm
+                  </NavLink>
+                  <NavLink className="nav-link" to="/admin/category">
+                    Quản lý đơn hàng
                   </NavLink>
                 </Nav>
 
                 <Nav>
                   {user && user.email && (
-                    <span className="nav-link">Welcome {user.email}</span>
+                    <span className="nav-link">Chào {user.email}</span>
                   )}
-                  <NavDropdown title="Setting" id="basic-nav-dropdown">
+                  <NavDropdown title="Cài đặt" id="basic-nav-dropdown">
                     {user && user.auth === true ? (
                       <NavDropdown.Item onClick={() => handleLogout()}>
-                        Logout
+                        Đăng xuất
                       </NavDropdown.Item>
                     ) : (
                       <NavLink className="dropdown-item" to="/admin/login">
-                        Login
+                        Đăng nhập
                       </NavLink>
                     )}
                   </NavDropdown>

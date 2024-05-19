@@ -8,6 +8,9 @@ import Login from "../components/admin/Login";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./NotFound";
 import Starter from "../components/admin/Starter";
+import TableSupplier from "../components/admin/account/TableSupplier";
+import TableApproval from "../components/admin/account/TableApproval";
+import TableCategory from "../components/admin/category/TableCategory";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +26,30 @@ const AppRoutes = () => {
             element={
               <PrivateRoute>
                 <TableUsers />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="suppliers"
+            element={
+              <PrivateRoute>
+                <TableSupplier />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="approval"
+            element={
+              <PrivateRoute>
+                <TableApproval />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="category"
+            element={
+              <PrivateRoute>
+                <TableCategory />
               </PrivateRoute>
             }
           />

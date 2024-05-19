@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { deleteUser } from "../../../services/UserService";
+import { deleteUser, updateAccountStatus } from "../../../services/UserService";
 import { toast } from "react-toastify";
 
 const ModalConfirm = (props) => {
@@ -8,13 +8,15 @@ const ModalConfirm = (props) => {
     props;
 
   const confirmDelete = async () => {
-    let res = await deleteUser(dataUserDelete.id);
-    if (res && res.status === 204) {
-      toast.success("Delete successfully");
+    // let res = await deleteUser(dataUserDelete.id);
+    let currentState = dataUserDelete.status ? 0 : 1
+    let res = await updateAccountStatus(dataUserDelete.id, currentState);
+    if (res && res.status === 200) {
+      toast.success("Cập nhật thành công");
       handleClose();
       handleDeleteUserFromModal(dataUserDelete);
     } else {
-      toast.error("Falied to delete");
+      toast.error("Có lỗi xuất hiện ...");
     }
   };
 
@@ -27,19 +29,19 @@ const ModalConfirm = (props) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Xoa nguoi dung</Modal.Title>
+          <Modal.Title>Cập nhật trạng thái</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div classNameName="body-add-new">
-            Chac chan xoa nguoi dung, <b>email="{dataUserDelete.email}"</b>?
+            Bạn có chắc chắn cập nhật trạng thái cho <b>email="{dataUserDelete.email}"</b>?
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Hủy
           </Button>
           <Button variant="primary" onClick={() => confirmDelete()}>
-            Confirm
+            Đồng ý
           </Button>
         </Modal.Footer>
       </Modal>
