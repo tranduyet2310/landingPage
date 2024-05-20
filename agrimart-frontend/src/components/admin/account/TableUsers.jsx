@@ -64,7 +64,7 @@ const TableUsers = (props) => {
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
-    getUsers(+event.selected + 1);
+    getUsers(event.selected);
   };
 
   const handleEditUser = (user) => {

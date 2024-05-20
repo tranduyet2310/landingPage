@@ -11,6 +11,9 @@ import Starter from "../components/admin/Starter";
 import TableSupplier from "../components/admin/account/TableSupplier";
 import TableApproval from "../components/admin/account/TableApproval";
 import TableCategory from "../components/admin/category/TableCategory";
+import TableProduct from "../components/admin/product/TableProduct";
+import TableOrder from "../components/admin/order/TableOrder";
+import TableGarden from "../components/admin/garden/TableGarden";
 
 const AppRoutes = () => {
   return (
@@ -46,10 +49,34 @@ const AppRoutes = () => {
             }
           />
           <Route
-            path="category"
+            path="categories"
             element={
               <PrivateRoute>
                 <TableCategory />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="products"
+            element={
+              <PrivateRoute>
+                <TableProduct />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="orders"
+            element={
+              <PrivateRoute>
+                <TableOrder />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="garden"
+            element={
+              <PrivateRoute>
+                <TableGarden />
               </PrivateRoute>
             }
           />

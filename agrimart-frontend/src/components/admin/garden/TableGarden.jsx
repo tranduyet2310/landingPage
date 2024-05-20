@@ -2,23 +2,22 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import ReactPaginate from "react-paginate";
 import _, { debounce } from "lodash";
+import { getAllFields } from "../../../services/FieldService";
+import ModalEditGarden from "./ModalEditGarden";
 import "../TableUsers.scss";
-import { getAllSuppliers } from "../../../services/SupplierService";
-import ModalEditSupplier from "./ModalEditSupplier";
-import ModalConfirmSupplier from "./ModalConfirmSupplier";
 
-const TableSupplier = (props) => {
-  const [listUsers, setListUsers] = useState([]);
-  const [totalUsers, setTotalUsers] = useState(0);
+const TableGarden = (props) => {
+  const [listFields, setListFields] = useState([]);
+  const [totalElement, setTotalElement] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
 
   const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
 
   const [isShowModalEdit, setIsShowModalEdit] = useState(false);
-  const [dataUserEdit, setDataUserEdit] = useState({});
+  const [dataFieldEdit, setDataFieldEdit] = useState({});
 
   const [isShowModalDelete, setIsShowModalDelete] = useState(false);
-  const [dataUserDelete, setDataUserDelete] = useState({});
+  const [dataFieldDelete, setDataFieldDelete] = useState({});
 
   const [sortBy, setSortBy] = useState("asc");
   const [sortField, setSortField] = useState("id");
@@ -31,90 +30,96 @@ const TableSupplier = (props) => {
     setIsShowModalDelete(false);
   };
   // notice
-  const handleUpdateTable = (user) => {
-    setListUsers([user, ...listUsers]);
+  const handleUpdateTable = (field) => {
+    getFields(0);
   };
 
-  const handleEditUserFromModal = (user) => {
-    let cloneListUsers = _.cloneDeep(listUsers);
-    let index = listUsers.findIndex((item) => item.id === user.id);
-    cloneListUsers[index].fullName = user.fullName;
-    cloneListUsers[index].email = user.email;
-    cloneListUsers[index].phone = user.phone;
-    setListUsers(cloneListUsers);
+  const handleEditProductFromModal = (field) => {
+    getFields(0);
   };
 
   useEffect(() => {
     // call api
-    getSuppliers(0);
+    getFields(0);
   }, []);
 
-  const getSuppliers = async (page) => {
-    let res = await getAllSuppliers(page);
-    console.log("getAllUser res", res);
+  const getFields = async (page) => {
+    let res = await getAllFields(page);
+    console.log("getAllFields res", res);
     if (res && res.data && res.data.content) {
-      setTotalUsers(res.data.totalElements);
+      setTotalElement(res.data.totalElements);
       setTotalPages(res.data.totalPage);
-      setListUsers(res.data.content);
+      setListFields(res.data.content);
     }
-    console.log(">>> check res: ", res);
   };
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
-    getSuppliers(event.selected);
+    getFields(event.selected);
   };
 
-  const handleEditUser = (user) => {
-    setDataUserEdit(user);
+  const handleEditProduct = (field) => {
+    setDataFieldEdit(field);
     setIsShowModalEdit(true);
   };
 
-  const handleDeleteUser = (user) => {
+  const handleDeleteProduct = (field) => {
     setIsShowModalDelete(true);
-    setDataUserDelete(user);
-    console.log(user);
+    setDataFieldDelete(field);
+    console.log(field);
   };
 
-  const handleDeleteUserFromModal = (user) => {
-    getSuppliers(0);
+  const handleDeleteProductFromModal = (field) => {
+    getFields(0);
   };
 
   const handleSort = (sortBy, sortField) => {
     setSortBy(sortBy);
     setSortField(sortField);
 
-    let cloneListUsers = _.cloneDeep(listUsers);
+    let cloneListUsers = _.cloneDeep(listFields);
     cloneListUsers = _.orderBy(cloneListUsers, [sortField], [sortBy]);
-    setListUsers(cloneListUsers);
+    setListFields(cloneListUsers);
   };
 
   const handleSearch = debounce((event) => {
     console.log(event.target.value);
     let term = event.target.value;
     if (term) {
-      let cloneListUsers = _.cloneDeep(listUsers);
+      let cloneListUsers = _.cloneDeep(listFields);
       cloneListUsers = cloneListUsers.filter((item) =>
-        item.email.includes(term)
+        item.cropsName.includes(term)
       );
-      setListUsers(cloneListUsers);
+      setListFields(cloneListUsers);
     } else {
-      getSuppliers(0);
+      getFields(0);
     }
   }, 500);
+
+  const convertUnit = (kg) => {
+    if (kg >= 1000) {
+      return `${(kg / 1000).toFixed(1)} tấn`;
+    } else if (kg >= 100) {
+      return `${(kg / 100).toFixed(1)} tạ`;
+    } else if (kg >= 10) {
+      return `${(kg / 10).toFixed(1)} yến`;
+    } else {
+      return `${kg} kg`;
+    }
+  };
 
   return (
     <>
       <div className="my-3 add-new d-flex justify-content-center align-items-center">
         <span style={{ fontSize: "2rem" }}>
-          <b>Danh sách nhà cung cấp</b>
+          <b>Danh sách vườn cây</b>
         </span>
       </div>
 
       <div className="col-12 col-sm-4 my-3">
         <input
           className="form-control"
-          placeholder="Tìm kiếm theo email"
+          placeholder="Tìm kiếm theo tên cây trồng"
           // value={keyword}
           onChange={(event) => handleSearch(event)}
         />
@@ -139,52 +144,64 @@ const TableSupplier = (props) => {
                   </span>
                 </div>
               </th>
-              <th>Email</th>
               <th>
                 <div className="sort-header">
-                  <span>Họ và tên</span>
+                  <span>Vụ mùa</span>
                   <span>
                     <i
                       className="fa-solid fa-arrow-down"
-                      onClick={() => handleSort("desc", "contactName")}
+                      onClick={() => handleSort("desc", "season")}
                     ></i>
                     <i
                       className="fa-solid fa-arrow-up"
-                      onClick={() => handleSort("asc", "contactName")}
+                      onClick={() => handleSort("asc", "season")}
                     ></i>
                   </span>
                 </div>
               </th>
-              <th>Tên cửa hàng</th>
-              <th>Số điện thoại</th>
+              <th>
+                <div className="sort-header">
+                  <span>Loại cây trồng</span>
+                  <span>
+                    <i
+                      className="fa-solid fa-arrow-down"
+                      onClick={() => handleSort("desc", "cropsType")}
+                    ></i>
+                    <i
+                      className="fa-solid fa-arrow-up"
+                      onClick={() => handleSort("asc", "cropsType")}
+                    ></i>
+                  </span>
+                </div>
+              </th>
+              <th>Tên cây trồng</th>
+              <th>Diện tích vườn</th>
+              <th>Sản lượng dự kiến</th>
+              <th>Nhà cung cấp</th>
               <th>Thao tác</th>
             </tr>
           </thead>
           <tbody>
-            {listUsers &&
-              listUsers.length > 0 &&
-              listUsers.map((item, index) => {
+            {listFields &&
+              listFields.length > 0 &&
+              listFields.map((item, index) => {
                 return (
-                  <tr key={`user-${index}`}>
+                  <tr key={`field-${index}`}>
                     <td>{item.id}</td>
-                    <td>{item.email}</td>
-                    <td>{item.contactName}</td>
-                    <td>{item.shopName}</td>
-                    <td>{item.phone}</td>
+                    <td>{item.season}</td>
+                    <td>{item.cropsType}</td>
+                    <td>{item.cropsName}</td>
+                    <td>{item.area}</td>
+                    <td>
+                      {convertUnit(parseFloat(item.estimateYield))}
+                    </td>
+                    <td>{item.supplierContactName}</td>
                     <td>
                       <button
                         className="btn btn-warning mx-3"
-                        onClick={() => handleEditUser(item)}
+                        onClick={() => handleEditProduct(item)}
                       >
-                        Xem
-                      </button>
-                      <button
-                        className={`btn ${
-                          item.active ? "btn-success" : "btn-danger"
-                        }`}
-                        onClick={() => handleDeleteUser(item)}
-                      >
-                        Cập nhật
+                        Xem chi tiết
                       </button>
                     </td>
                   </tr>
@@ -213,21 +230,15 @@ const TableSupplier = (props) => {
         activeClassName="active"
       />
 
-      <ModalEditSupplier
+      <ModalEditGarden
         show={isShowModalEdit}
         handleClose={handleClose}
-        dataUserEdit={dataUserEdit}
-        handleEditUserFromModal={handleEditUserFromModal}
+        dataFieldEdit={dataFieldEdit}
+        handleEditProductFromModal={handleEditProductFromModal}
       />
 
-      <ModalConfirmSupplier
-        show={isShowModalDelete}
-        handleClose={handleClose}
-        dataUserDelete={dataUserDelete}
-        handleDeleteUserFromModal={handleDeleteUserFromModal}
-      />
     </>
   );
 };
 
-export default TableSupplier;
+export default TableGarden;

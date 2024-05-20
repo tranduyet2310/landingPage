@@ -7,3 +7,16 @@
         padding: 0 2px;
     }
 }
+
+.image-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: #dedede;
+}
+
+textarea.form-control[disabled] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    overflow-y: auto;
+}

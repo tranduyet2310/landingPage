@@ -62,7 +62,7 @@ const TableApproval = (props) => {
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
-    getSuppliers(+event.selected + 1);
+    getSuppliers(event.selected);
   };
 
   const handleEditUser = (user) => {

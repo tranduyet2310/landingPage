@@ -48,10 +48,7 @@ const Header = (props) => {
               window.location.pathname === "/admin/home") && (
               <>
                 <Nav className="me-auto" activeKey={location.pathname}>
-                  <NavLink className="nav-link" to="/admin/home">
-                    Trang chủ
-                  </NavLink>
-                  <NavLink className="nav-link" to="/admin/category">
+                  <NavLink className="nav-link" to="/admin/categories">
                     Quản lý danh mục
                   </NavLink>
                   <NavDropdown
@@ -68,11 +65,14 @@ const Header = (props) => {
                       Phê duyệt
                     </NavLink>
                   </NavDropdown>
-                  <NavLink className="nav-link" to="/admin/category">
+                  <NavLink className="nav-link" to="/admin/products">
                     Quản lý sản phẩm
                   </NavLink>
-                  <NavLink className="nav-link" to="/admin/category">
+                  <NavLink className="nav-link" to="/admin/orders">
                     Quản lý đơn hàng
+                  </NavLink>
+                  <NavLink className="nav-link" to="/admin/garden">
+                    Quản lý vườn
                   </NavLink>
                 </Nav>
 
