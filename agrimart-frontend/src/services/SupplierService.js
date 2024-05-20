@@ -12,4 +12,4 @@ const updateSupplierAccountStatus = (supplierId, state) => {
     return axios.patch(`api/suppliers/${supplierId}/status?status=${state}`)
 }
 
-export {getAllSuppliers, updateSupplierAccountStatus, getApprovalSuppliers};
+export { getAllSuppliers, updateSupplierAccountStatus, getApprovalSuppliers };
