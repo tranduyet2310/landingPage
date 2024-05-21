@@ -1,14 +1,14 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { updateOrderStatus } from "../../../services/OrderService";
+import { updateCooperationStatus } from "../../../services/OrderService";
 
-const ModalConfirmOrder = (props) => {
+const ModalConfirmCooperation = (props) => {
   const { show, handleClose, dataOrderDelete, handleDeleteOrderFromModal } =
     props;
 
   const confirmUpdate = async () => {
-    let res = await updateOrderStatus(dataOrderDelete.id, "DELIVERING");
+    let res = await updateCooperationStatus(dataOrderDelete.id, "DELIVERING");
     if (res && res.status === 200) {
       toast.success("Cập nhật thành công");
       handleClose();
@@ -31,8 +31,7 @@ const ModalConfirmOrder = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div classNameName="body-add-new">
-            Bạn có chắc chắn muốn cập nhật trạng thái cho đơn hàng
-            <b> "{dataOrderDelete.orderNumber}"</b>?
+            Bạn có chắc chắn muốn cập nhật trạng thái cho đơn hàng này?
           </div>
         </Modal.Body>
         <Modal.Footer>
@@ -48,4 +47,4 @@ const ModalConfirmOrder = (props) => {
   );
 };
 
-export default ModalConfirmOrder;
+export default ModalConfirmCooperation;

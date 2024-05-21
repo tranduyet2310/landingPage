@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import ReactPaginate from "react-paginate";
 import _, { debounce } from "lodash";
-import { getAllCategories } from "../../../services/CategoryService";
-import "../TableUsers.scss";
 import ModalEditProduct from "./ModalEditProduct";
 import ModalConfirmProduct from "./ModalConfirmProduct";
 import { getAllProducts } from "../../../services/ProductService";
@@ -13,6 +11,7 @@ const TableProduct = (props) => {
   const [listProducts, setListProducts] = useState([]);
   const [totalElement, setTotalElement] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentpage] = useState(0);
 
   const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
 
@@ -59,6 +58,7 @@ const TableProduct = (props) => {
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
+    setCurrentpage(event.selected);
     getProducts(event.selected);
   };
 
@@ -96,7 +96,7 @@ const TableProduct = (props) => {
       );
       setListProducts(cloneListUsers);
     } else {
-      getProducts(0);
+      getProducts(currentPage);
     }
   }, 500);
 

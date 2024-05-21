@@ -4,4 +4,8 @@ const getAllFields = (pageNo) => {
     return axios.get(`api/field?pageNo=${pageNo}`)
 }
 
-export { getAllFields }
+const getFieldById = (fieldId) => {
+    return axios.get(`api/field/${fieldId}/detail`)
+}
+
+export { getAllFields, getFieldById }

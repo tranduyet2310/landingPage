@@ -12,6 +12,7 @@ const TableUsers = (props) => {
   const [listUsers, setListUsers] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentpage] = useState(0);
 
   const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
 
@@ -59,11 +60,11 @@ const TableUsers = (props) => {
       setTotalPages(res.data.totalPage);
       setListUsers(res.data.content);
     }
-    console.log(">>> check res: ", res);
   };
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
+    setCurrentpage(event.selected);
     getUsers(event.selected);
   };
 
@@ -75,7 +76,6 @@ const TableUsers = (props) => {
   const handleDeleteUser = (user) => {
     setIsShowModalDelete(true);
     setDataUserDelete(user);
-    console.log(user);
   };
 
   const handleDeleteUserFromModal = (user) => {
@@ -104,7 +104,7 @@ const TableUsers = (props) => {
       );
       setListUsers(cloneListUsers);
     } else {
-      getUsers(0);
+      getUsers(currentPage);
     }
   }, 500);
 

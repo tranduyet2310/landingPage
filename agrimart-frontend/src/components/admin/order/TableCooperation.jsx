@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import ReactPaginate from "react-paginate";
 import _, { debounce } from "lodash";
-import { getAllFields } from "../../../services/FieldService";
-import ModalEditGarden from "./ModalEditGarden";
 import "../TableUsers.scss";
+import { getAllCooperations } from "../../../services/OrderService";
+import ModalEditCooperation from "./ModalEditCooperation";
+import ModalConfirmCooperation from "./ModalConfirmCooperation";
 
-const TableGarden = (props) => {
-  const [listFields, setListFields] = useState([]);
+const TableCooperation = (props) => {
+  const [listOrders, setListOrders] = useState([]);
   const [totalElement, setTotalElement] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentpage] = useState(0);
@@ -15,10 +16,10 @@ const TableGarden = (props) => {
   const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
 
   const [isShowModalEdit, setIsShowModalEdit] = useState(false);
-  const [dataFieldEdit, setDataFieldEdit] = useState({});
+  const [dataOrderEdit, setDataOrderEdit] = useState({});
 
   const [isShowModalDelete, setIsShowModalDelete] = useState(false);
-  const [dataFieldDelete, setDataFieldDelete] = useState({});
+  const [dataOrderDelete, setDataOrderDelete] = useState({});
 
   const [sortBy, setSortBy] = useState("asc");
   const [sortField, setSortField] = useState("id");
@@ -31,72 +32,126 @@ const TableGarden = (props) => {
     setIsShowModalDelete(false);
   };
   // notice
-  const handleUpdateTable = (field) => {
-    getFields(0);
+  const handleUpdateTable = (order) => {
+    getOrders(0);
   };
 
-  const handleEditProductFromModal = (field) => {
-    getFields(0);
+  const handleEditOrderFromModal = (order) => {
+    getOrders(0);
   };
 
   useEffect(() => {
     // call api
-    getFields(0);
+    getOrders(0);
   }, []);
 
-  const getFields = async (page) => {
-    let res = await getAllFields(page);
-    console.log("getAllFields res", res);
+  const getOrders = async (page) => {
+    let res = await getAllCooperations(page);
+    console.log("getAllCooperations res", res);
     if (res && res.data && res.data.content) {
       setTotalElement(res.data.totalElements);
       setTotalPages(res.data.totalPage);
-      setListFields(res.data.content);
+      setListOrders(res.data.content);
     }
   };
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
     setCurrentpage(event.selected);
-    getFields(event.selected);
+    getOrders(event.selected);
   };
 
-  const handleEditProduct = (field) => {
-    setDataFieldEdit(field);
+  const handleEditProduct = (order) => {
+    setDataOrderEdit(order);
     setIsShowModalEdit(true);
   };
 
-  const handleDeleteProduct = (field) => {
+  const handleDeleteProduct = (order) => {
     setIsShowModalDelete(true);
-    setDataFieldDelete(field);
-    console.log(field);
+    setDataOrderDelete(order);
+    console.log(order);
   };
 
-  const handleDeleteProductFromModal = (field) => {
-    getFields(0);
+  const handleDeleteOrderFromModal = (order) => {
+    getOrders(0);
   };
 
   const handleSort = (sortBy, sortField) => {
     setSortBy(sortBy);
     setSortField(sortField);
 
-    let cloneListUsers = _.cloneDeep(listFields);
+    let cloneListUsers = _.cloneDeep(listOrders);
     cloneListUsers = _.orderBy(cloneListUsers, [sortField], [sortBy]);
-    setListFields(cloneListUsers);
+    setListOrders(cloneListUsers);
   };
 
   const handleSearch = debounce((event) => {
     console.log(event.target.value);
     let term = event.target.value;
     if (term) {
-      let cloneListUsers = _.cloneDeep(listFields);
+      let cloneListUsers = _.cloneDeep(listOrders);
       cloneListUsers = cloneListUsers.filter((item) =>
         item.cropsName.includes(term)
       );
-      setListFields(cloneListUsers);
+      setListOrders(cloneListUsers);
     } else {
-      getFields(currentPage);
+      getOrders(currentPage);
     }
   }, 500);
+
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case "CANCELLED":
+        return { color: "red" };
+      case "COMPLETED":
+      case "DELIVERING":
+        return { color: "green" };
+      case "PROCESSING":
+      case "CONFIRMED":
+        return { color: "#FF9900" };
+      default:
+        return {};
+    }
+  };
+
+  const getButtonStyle = (status, item) => {
+    switch (status) {
+      case "CANCELLED":
+        return (
+          <button className="btn btn-secondary" disabled>
+            Đã hủy
+          </button>
+        );
+      case "COMPLETED":
+        return (
+          <button className="btn btn-secondary" disabled>
+            Đã giao hàng
+          </button>
+        );
+      case "DELIVERING":
+        return (
+          <button
+            className="btn btn-success"
+            onClick={() => handleDeleteProduct(item)}
+          >
+            Giao hàng
+          </button>
+        );
+      case "PROCESSING":
+      case "CONFIRMED":
+        return (
+          <button className="btn btn-warning" disabled>
+            Đang xử lý
+          </button>
+        );
+      default:
+        return (
+          <button className="btn btn-warning" disabled>
+            Cập nhật
+          </button>
+        );
+    }
+  };
 
   const convertUnit = (kg) => {
     if (kg >= 1000) {
@@ -114,14 +169,14 @@ const TableGarden = (props) => {
     <>
       <div className="my-3 add-new d-flex justify-content-center align-items-center">
         <span style={{ fontSize: "2rem" }}>
-          <b>Danh sách vườn cây</b>
+          <b>Danh sách đơn hàng hợp tác</b>
         </span>
       </div>
 
       <div className="col-12 col-sm-4 my-3">
         <input
           className="form-control"
-          placeholder="Tìm kiếm theo tên cây trồng"
+          placeholder="Tìm kiếm theo loại cây trồng"
           // value={keyword}
           onChange={(event) => handleSearch(event)}
         />
@@ -148,63 +203,64 @@ const TableGarden = (props) => {
               </th>
               <th>
                 <div className="sort-header">
-                  <span>Vụ mùa</span>
+                  <span>Ngày tạo</span>
                   <span>
                     <i
                       className="fa-solid fa-arrow-down"
-                      onClick={() => handleSort("desc", "season")}
+                      onClick={() => handleSort("desc", "dateCreated")}
                     ></i>
                     <i
                       className="fa-solid fa-arrow-up"
-                      onClick={() => handleSort("asc", "season")}
+                      onClick={() => handleSort("asc", "dateCreated")}
                     ></i>
                   </span>
                 </div>
               </th>
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+              <th>Loại cây trồng</th>
+              <th>Số lượng đặt</th>
               <th>
                 <div className="sort-header">
-                  <span>Loại cây trồng</span>
+                  <span>Trạng thái</span>
                   <span>
                     <i
                       className="fa-solid fa-arrow-down"
-                      onClick={() => handleSort("desc", "cropsType")}
+                      onClick={() => handleSort("desc", "cooperationStatus")}
                     ></i>
                     <i
                       className="fa-solid fa-arrow-up"
-                      onClick={() => handleSort("asc", "cropsType")}
+                      onClick={() => handleSort("asc", "cooperationStatus")}
                     ></i>
                   </span>
                 </div>
               </th>
-              <th>Tên cây trồng</th>
-              <th>Diện tích vườn</th>
-              <th>Sản lượng dự kiến</th>
-              <th>Nhà cung cấp</th>
               <th>Thao tác</th>
             </tr>
           </thead>
           <tbody>
-            {listFields &&
-              listFields.length > 0 &&
-              listFields.map((item, index) => {
+            {listOrders &&
+              listOrders.length > 0 &&
+              listOrders.map((item, index) => {
                 return (
-                  <tr key={`field-${index}`}>
+                  <tr key={`order-${index}`}>
                     <td>{item.id}</td>
-                    <td>{item.season}</td>
-                    <td>{item.cropsType}</td>
+                    <td>{item.dateCreated}</td>
+                    <td>{item.fullName}</td>
+                    <td>{item.contact}</td>
                     <td>{item.cropsName}</td>
-                    <td>{item.area}</td>
-                    <td>
-                      {convertUnit(parseFloat(item.estimateYield))}
+                    <td>{convertUnit(parseFloat(item.requireYield))}</td>
+                    <td style={getStatusStyle(item.cooperationStatus)}>
+                      {item.cooperationStatus}
                     </td>
-                    <td>{item.supplierContactName}</td>
                     <td>
                       <button
-                        className="btn btn-warning mx-3"
+                        className="btn btn-primary mx-3"
                         onClick={() => handleEditProduct(item)}
                       >
-                        Xem chi tiết
+                        Xem
                       </button>
+                      {getButtonStyle(item.cooperationStatus, item)}
                     </td>
                   </tr>
                 );
@@ -232,15 +288,21 @@ const TableGarden = (props) => {
         activeClassName="active"
       />
 
-      <ModalEditGarden
+      <ModalEditCooperation
         show={isShowModalEdit}
         handleClose={handleClose}
-        dataFieldEdit={dataFieldEdit}
-        handleEditProductFromModal={handleEditProductFromModal}
+        dataOrderEdit={dataOrderEdit}
+        handleEditOrderFromModal={handleEditOrderFromModal}
       />
 
+      <ModalConfirmCooperation
+        show={isShowModalDelete}
+        handleClose={handleClose}
+        dataOrderDelete={dataOrderDelete}
+        handleDeleteOrderFromModal={handleDeleteOrderFromModal}
+      />
     </>
   );
 };
 
-export default TableGarden;
+export default TableCooperation;

@@ -14,6 +14,7 @@ import TableCategory from "../components/admin/category/TableCategory";
 import TableProduct from "../components/admin/product/TableProduct";
 import TableOrder from "../components/admin/order/TableOrder";
 import TableGarden from "../components/admin/garden/TableGarden";
+import TableCooperation from "../components/admin/order/TableCooperation";
 
 const AppRoutes = () => {
   return (
@@ -69,6 +70,14 @@ const AppRoutes = () => {
             element={
               <PrivateRoute>
                 <TableOrder />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="cooperation"
+            element={
+              <PrivateRoute>
+                <TableCooperation />
               </PrivateRoute>
             }
           />

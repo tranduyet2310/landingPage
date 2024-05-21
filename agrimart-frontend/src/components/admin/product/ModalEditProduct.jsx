@@ -8,6 +8,8 @@ const ModalEditProduct = (props) => {
   const [productName, setProductName] = useState("");
   const [id, setId] = useState("");
   const [rating, setRating] = useState("");
+  const [standardPrice, setStandardPrice] = useState("");
+  const [discountPrice, setDiscountPrice] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNext = () => {
@@ -29,11 +31,18 @@ const ModalEditProduct = (props) => {
     }
   };
 
+  const formatValue = (value) => {
+    let result = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `${result} VNĐ`;
+  };
+
   useEffect(() => {
     if (show) {
       setId(dataProductEdit.id);
       setProductName(dataProductEdit.productName);
       fetchAverageRating(dataProductEdit.id);
+      setStandardPrice(formatValue(dataProductEdit.standardPrice));
+      setDiscountPrice(formatValue(dataProductEdit.discountPrice));
     }
   }, [dataProductEdit]);
 
@@ -155,7 +164,7 @@ const ModalEditProduct = (props) => {
                       type="text"
                       disabled
                       className="form-control"
-                      value={dataProductEdit.standardPrice}
+                      value={standardPrice}
                     />
                   </div>
                   <div className="mb-3">
@@ -166,7 +175,7 @@ const ModalEditProduct = (props) => {
                       type="text"
                       disabled
                       className="form-control"
-                      value={dataProductEdit.discountPrice}
+                      value={discountPrice}
                     />
                   </div>
 

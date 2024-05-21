@@ -68,9 +68,14 @@ const Header = (props) => {
                   <NavLink className="nav-link" to="/admin/products">
                     Quản lý sản phẩm
                   </NavLink>
-                  <NavLink className="nav-link" to="/admin/orders">
-                    Quản lý đơn hàng
-                  </NavLink>
+                  <NavDropdown title="Quản lý đơn hàng" id="basic-nav-dropdown">
+                    <NavLink className="dropdown-item" to="/admin/orders">
+                      Tất cả đơn hàng
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/admin/cooperation">
+                      Đơn hàng hợp tác
+                    </NavLink>
+                  </NavDropdown>
                   <NavLink className="nav-link" to="/admin/garden">
                     Quản lý vườn
                   </NavLink>

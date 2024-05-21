@@ -5,9 +5,8 @@ import CropsStatusDisplay from "./CropsStatusDisplay";
 const ModalEditGarden = (props) => {
   const { show, handleClose, dataFieldEdit, handleEditProductFromModal } =
     props;
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [estimateYield, setEstimateYield] = useState("");
+  const [estimatePrice, setEstimatePrice] = useState("");
 
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -21,9 +20,8 @@ const ModalEditGarden = (props) => {
 
   useEffect(() => {
     if (show) {
-      setEmail(dataFieldEdit.email);
-      setFullName(dataFieldEdit.fullName);
-      setPhoneNumber(dataFieldEdit.phone);
+      setEstimateYield(convertUnit(parseFloat(dataFieldEdit.estimateYield)));
+      setEstimatePrice(formatValue(dataFieldEdit.estimatePrice));
     }
   }, [dataFieldEdit]);
 
@@ -37,6 +35,11 @@ const ModalEditGarden = (props) => {
     } else {
       return `${kg} kg`;
     }
+  };
+
+  const formatValue = (value) => {
+    let result = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return `${result} VNĐ`;
   };
 
   return (
@@ -60,9 +63,7 @@ const ModalEditGarden = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      value={convertUnit(
-                        parseFloat(dataFieldEdit.estimateYield)
-                      )}
+                      value={estimateYield}
                       disabled
                     />
                   </div>
@@ -71,7 +72,7 @@ const ModalEditGarden = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      value={`${dataFieldEdit.estimatePrice} đ`}
+                      value={estimatePrice}
                       disabled
                     />
                   </div>

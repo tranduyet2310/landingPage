@@ -32,5 +32,9 @@ const updateAccountStatus = (userId, state) => {
     return axios.patch(`api/users/${userId}/status?status=${state}`)
 }
 
+const getUserAddressById = (addressId) => {
+    return axios.get(`api/users/addresses/${addressId}`)
+}
+
 export { fetchAllUser, postCreateUser, putUpdateUser, deleteUser, loginApi, 
-    getAllUsers, updateUserInfo, updateAccountStatus };
+    getAllUsers, updateUserInfo, updateAccountStatus, getUserAddressById };

@@ -11,6 +11,7 @@ const TableApproval = (props) => {
   const [listUsers, setListUsers] = useState([]);
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentpage] = useState(0);
 
   const [isShowModalAddNew, setIsShowModalAddNew] = useState(false);
 
@@ -57,11 +58,11 @@ const TableApproval = (props) => {
       setTotalPages(res.data.totalPage);
       setListUsers(res.data.content);
     }
-    console.log(">>> check res: ", res);
   };
 
   const handlePageClick = (event) => {
     console.log("event lib: ", event);
+    setCurrentpage(event.selected);
     getSuppliers(event.selected);
   };
 
@@ -99,7 +100,7 @@ const TableApproval = (props) => {
       );
       setListUsers(cloneListUsers);
     } else {
-      getSuppliers(0);
+      getSuppliers(currentPage);
     }
   }, 500);
 
