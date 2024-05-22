@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { postCreateUser } from "../../../services/UserService";
 import { toast } from "react-toastify";
 
 const ModalAddNew = (props) => {
@@ -9,20 +8,20 @@ const ModalAddNew = (props) => {
   const [job, setJob] = useState("");
 
   const handleSaveUser = async () => {
-    let res = await postCreateUser(name, job);
-    console.log(" res:", res);
-    if (res && res.id) {
-      // success
-      handleClose();
-      setName("");
-      setJob("");
-      toast.success("Create new user successfully");
-      // notice demo
-      handleUpdateTable({ first_name: name, id: res.id });
-    } else {
-      // error
-      toast.error("An error occur ..");
-    }
+    // let res = await postCreateUser(name, job);
+    // console.log(" res:", res);
+    // if (res && res.id) {
+    //   // success
+    //   handleClose();
+    //   setName("");
+    //   setJob("");
+    //   toast.success("Create new user successfully");
+    //   // notice demo
+    //   handleUpdateTable({ first_name: name, id: res.id });
+    // } else {
+    //   // error
+    //   toast.error("An error occur ..");
+    // }
   };
 
   return (

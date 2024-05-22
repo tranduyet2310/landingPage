@@ -20,4 +20,12 @@ const getWarehouseById = (warehouseId) => {
     return axios.get(`api/suppliers/warehouses/${warehouseId}`)
 }
 
-export { getAllSuppliers, updateSupplierAccountStatus, getApprovalSuppliers, getSupplierById, getWarehouseById };
+const countRegisterAccount = () => {
+    return axios.get("api/suppliers/register")
+}
+
+const getStatisticSupplier = (month, year) => {
+    return axios.get(`api/suppliers/statistic?m=${month}&y=${year}`)
+}
+
+export { getAllSuppliers, updateSupplierAccountStatus, getApprovalSuppliers, getSupplierById, getWarehouseById, countRegisterAccount, getStatisticSupplier };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { putUpdateUser, updateUserInfo } from "../../../services/UserService";
+import { updateUserInfo } from "../../../services/UserService";
 
 const ModalEditUser = (props) => {
   const { show, handleClose, dataUserEdit, handleEditUserFromModal } = props;
@@ -10,8 +10,12 @@ const ModalEditUser = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleEditUser = async () => {
-    // let result = await putUpdateUser(name, job);
-    let result = await updateUserInfo(dataUserEdit.id, email, fullName, phoneNumber);
+    let result = await updateUserInfo(
+      dataUserEdit.id,
+      email,
+      fullName,
+      phoneNumber
+    );
     const response = result.data;
     console.log("response ", response);
     console.log("result ", result);
@@ -20,7 +24,7 @@ const ModalEditUser = (props) => {
         fullName: fullName,
         id: dataUserEdit.id,
         phone: phoneNumber,
-        email: email
+        email: email,
       });
       handleClose();
       toast.success("Cập nhật thành công");

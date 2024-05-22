@@ -1,21 +1,5 @@
 import axios from "./customizeAxios";
 
-const fetchAllUser = (page) => {
-    return axios.get(`/api/users?page=${page}`); 
-}
-
-const postCreateUser = (name, job) => {
-    return axios.post("/api/users", {name, job});
-}
-
-const putUpdateUser = (name, job) => {
-    return axios.put("/api/users/2", {name, job});
-}
-
-const deleteUser = (id) => {
-    return axios.delete(`/api/users/${id}`);
-}
-
 const loginApi = (email, password) => {
     return axios.post("api/login", {email, password});
 }
@@ -36,5 +20,12 @@ const getUserAddressById = (addressId) => {
     return axios.get(`api/users/addresses/${addressId}`)
 }
 
-export { fetchAllUser, postCreateUser, putUpdateUser, deleteUser, loginApi, 
-    getAllUsers, updateUserInfo, updateAccountStatus, getUserAddressById };
+const getStatisticUser = (month, year) => {
+    return axios.get(`api/users/statistic?m=${month}&y=${year}`)
+}
+
+const getChartData = (month, year) => {
+    return axios.get(`api/users/chart?m=${month}&y=${year}`)
+}
+
+export { loginApi, getAllUsers, updateUserInfo, updateAccountStatus, getUserAddressById, getStatisticUser, getChartData };

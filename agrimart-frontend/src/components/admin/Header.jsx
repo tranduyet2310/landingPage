@@ -24,7 +24,7 @@ const Header = (props) => {
 
   const handleLogout = () => {
     logout();
-    navigate("/admin/home");
+    navigate("/starter");
     toast.success("Log out success");
   };
 
@@ -32,7 +32,7 @@ const Header = (props) => {
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="/admin/home">
+          <Navbar.Brand href="/starter">
             <img
               src={logoApp}
               width="30"
@@ -48,6 +48,9 @@ const Header = (props) => {
               window.location.pathname === "/admin/home") && (
               <>
                 <Nav className="me-auto" activeKey={location.pathname}>
+                  <NavLink className="nav-link" to="/admin/home">
+                    Trang chủ
+                  </NavLink>
                   <NavLink className="nav-link" to="/admin/categories">
                     Quản lý danh mục
                   </NavLink>

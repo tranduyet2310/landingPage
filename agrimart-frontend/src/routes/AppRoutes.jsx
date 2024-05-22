@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import React from "react";
 import PublicPage from "../components/PublicPage";
 import AdminPage from "../components/admin/AdminPage";
-import Home from "../components/admin/Home";
 import TableUsers from "../components/admin/account/TableUsers";
 import Login from "../components/admin/Login";
 import PrivateRoute from "./PrivateRoute";
@@ -15,6 +14,7 @@ import TableProduct from "../components/admin/product/TableProduct";
 import TableOrder from "../components/admin/order/TableOrder";
 import TableGarden from "../components/admin/garden/TableGarden";
 import TableCooperation from "../components/admin/order/TableCooperation";
+import Home from "../components/admin/dashboard/Home";
 
 const AppRoutes = () => {
   return (
@@ -24,7 +24,14 @@ const AppRoutes = () => {
         <Route path="/starter" element={<Starter />} />
 
         <Route path="/admin" element={<AdminPage />}>
-          <Route path="home" element={<Home />} />
+          <Route
+            path="home"
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="users"
             element={

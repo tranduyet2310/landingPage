@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { fetchAllUser, getAllUsers } from "../../../services/UserService";
+import { getAllUsers } from "../../../services/UserService";
 import ReactPaginate from "react-paginate";
 import ModalAddNew from "./ModalAddNew";
 import ModalEditUser from "./ModalEditUser";
@@ -52,7 +52,6 @@ const TableUsers = (props) => {
   }, []);
 
   const getUsers = async (page) => {
-    // let res = await fetchAllUser(page);
     let res = await getAllUsers(page);
     console.log("getAllUser res", res);
     if (res && res.data && res.data.content) {

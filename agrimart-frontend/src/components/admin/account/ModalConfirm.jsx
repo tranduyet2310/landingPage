@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { deleteUser, updateAccountStatus } from "../../../services/UserService";
+import { updateAccountStatus } from "../../../services/UserService";
 import { toast } from "react-toastify";
 
 const ModalConfirm = (props) => {
@@ -8,7 +8,6 @@ const ModalConfirm = (props) => {
     props;
 
   const confirmDelete = async () => {
-    // let res = await deleteUser(dataUserDelete.id);
     let currentState = dataUserDelete.status ? 0 : 1
     let res = await updateAccountStatus(dataUserDelete.id, currentState);
     if (res && res.status === 200) {

@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   const handleGoBack = () => {
-    navigate("/admin/home");
+    navigate("/starter");
   };
 
   return (
