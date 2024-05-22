@@ -12,8 +12,8 @@ const calculateAverageRating = (productId) => {
     return axios.get(`api/reviews/${productId}/average`)
 }
 
-const countAllProducts = () => {
-    return axios.get("api/products/total")
+const countAllProducts = (month, year) => {
+    return axios.get(`api/products/total?m=${month}&y=${year}`)
 }
 
 export { getAllProducts, updateProductState, calculateAverageRating, countAllProducts }

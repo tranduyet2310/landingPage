@@ -20,8 +20,8 @@ const getWarehouseById = (warehouseId) => {
     return axios.get(`api/suppliers/warehouses/${warehouseId}`)
 }
 
-const countRegisterAccount = () => {
-    return axios.get("api/suppliers/register")
+const countRegisterAccount = (year) => {
+    return axios.get(`api/suppliers/register?y=${year}`)
 }
 
 const getStatisticSupplier = (month, year) => {

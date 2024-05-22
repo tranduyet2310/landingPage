@@ -10,6 +10,7 @@ import {
 } from "../../../services/FieldService";
 import { getChartData } from "../../../services/UserService";
 import { getOrderData, getPieChartData } from "../../../services/OrderService";
+import DateSelection from "./DateSelection";
 
 const Home = () => {
   const [currentDate, setCurrentDate] = useState("");
@@ -56,19 +57,24 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    setCurrentDate(getCurrentDate());
-    setCurrentMonth(getCurrentMonth());
-    setCurrentYear(getCurrentYear());
-  }, []);
+  // useEffect(() => {
+  //   setCurrentDate(getCurrentDate());
+  //   setCurrentMonth(getCurrentMonth());
+  //   setCurrentYear(getCurrentYear());
+  // }, []);
 
   useEffect(() => {
-    if(currentDate && currentMonth && currentYear){
+    console.log("?", currentDate, "*", currentMonth, "=", currentYear);
+    if (currentDate && currentMonth && currentYear) {
       getGardenLineChartData(currentMonth, currentYear);
       getAccountLineChartData(currentMonth, currentYear);
       getOrderBarChartData(currentMonth, currentYear);
       getOrderPieCharData(currentMonth, currentYear);
       getFieldPieChartData(currentYear);
+    } else {
+      setCurrentDate(getCurrentDate());
+      setCurrentMonth(getCurrentMonth());
+      setCurrentYear(getCurrentYear());
     }
   }, [currentDate, currentMonth, currentYear]);
 
@@ -93,9 +99,23 @@ const Home = () => {
     return year;
   };
 
+  const handleFromSelection = (month, year) => {
+    setCurrentMonth(month);
+    setCurrentYear(year);
+  };
+
   return (
     <>
       <div className="home">
+        <div className="col-12">
+          {currentDate && currentMonth && currentYear && (
+            <DateSelection
+              handleFromSelection={handleFromSelection}
+              monthValue={currentMonth}
+              yearValue={currentYear}
+            />
+          )}
+        </div>
         <div className="customize-table">
           {currentDate && currentMonth && currentYear && (
             <>

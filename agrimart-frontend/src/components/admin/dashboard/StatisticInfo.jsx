@@ -32,8 +32,8 @@ const StatisticInfo = (props) => {
   const getStatisticForCooperation = async (month, year) => {
     let res = await getStatisticCooperation(month, year);
     if (res && res.data) {
-      setTotalYields(convertUnit(res.data.current));
-      setGapYields(convertUnit(Math.abs(res.data.gaps)));
+      setTotalYields(res.data.current);
+      setGapYields(res.data.gaps);
     }
   };
 
@@ -48,8 +48,8 @@ const StatisticInfo = (props) => {
   const getStatisticForRevenue = async (month, year) => {
     let res = await getStatisticRevenue(month, year);
     if (res && res.data) {
-      setTotalRevenue(formatMoney(res.data.current));
-      setGapRevenue(formatMoney(Math.abs(res.data.gaps)));
+      setTotalRevenue(res.data.current);
+      setGapRevenue(res.data.gaps);
     }
   };
 
@@ -58,7 +58,7 @@ const StatisticInfo = (props) => {
     getStatisticForCooperation(currentMonth, currentYear);
     getStatisticForOrder(currentMonth, currentYear);
     getStatisticForRevenue(currentMonth, currentYear);
-  }, []);
+  }, [currentMonth, currentYear]);
 
   const convertUnit = (kg) => {
     if (kg >= 1000) {
@@ -111,9 +111,9 @@ const StatisticInfo = (props) => {
             className="fa-solid fa-sack-dollar"
             style={{ color: "#FFD43B" }}
           ></i>
-          <span className="featuredMoney">{totalRevenue}</span>
+          <span className="featuredMoney">{formatMoney(totalRevenue)}</span>
           <span className="featuredMoneyRate">
-            {gapRevenue}{" "}
+            {formatMoney(Math.abs(gapRevenue))}{" "}
             <i
               className={
                 gapRevenue > 0
@@ -130,9 +130,9 @@ const StatisticInfo = (props) => {
         <span className="featuredTitle">Tổng sản lượng hợp tác</span>
         <div className="featuredMoneyContainer">
           <i className="fa-solid fa-coins" style={{ color: "#FFD43B" }}></i>
-          <span className="featuredMoney">{totalYields}</span>
+          <span className="featuredMoney">{convertUnit(totalYields)}</span>
           <span className="featuredMoneyRate">
-            {gapYields}{" "}
+            {convertUnit(Math.abs(gapYields))}{" "}
             <i
               className={
                 gapYields > 0
