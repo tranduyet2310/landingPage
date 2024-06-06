@@ -8,8 +8,8 @@ export default defineConfig({
   server:{
     port: 3000,
     https:{
-      key: './certs/key.pem',
-      cert: './certs/server.pem',
+      key: './certs/privkey.pem',
+      cert: './certs/fullchain.pem',
     }
   }
 })

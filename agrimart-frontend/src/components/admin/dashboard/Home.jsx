@@ -11,6 +11,7 @@ import {
 import { getChartData } from "../../../services/UserService";
 import { getOrderData, getPieChartData } from "../../../services/OrderService";
 import DateSelection from "./DateSelection";
+import ShapePieChart from "./ShapePieChart";
 
 const Home = () => {
   const [currentDate, setCurrentDate] = useState("");
@@ -177,7 +178,7 @@ const Home = () => {
             <PieChartComponent
               title="Cơ cấu cây trồng tại vườn"
               dataSource={cropsNameData}
-              value="value"
+              dataKey="value"
             />
           )}
         </div>

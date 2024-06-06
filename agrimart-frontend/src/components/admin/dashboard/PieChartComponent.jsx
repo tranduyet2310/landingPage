@@ -56,7 +56,7 @@ const PieChartComponent = ({ title, dataSource, value }) => {
     <div className="chart-container">
       <h4 className="chartTitle small">{title}</h4>
       <div className="pieChart">
-        <ResponsiveContainer width="45%" aspect={1}>
+        <ResponsiveContainer width="40%" aspect={1}>
           <PieChart>
             <Pie
               data={dataSource}
@@ -76,7 +76,6 @@ const PieChartComponent = ({ title, dataSource, value }) => {
               ))}
             </Pie>
             <Tooltip />
-            <Legend />
           </PieChart>
         </ResponsiveContainer>
       </div>
