@@ -59,7 +59,7 @@ const Login = () => {
         />
         <div className="input-2">
           <input
-            type={isShowPassword == true ? "password" : "text"}
+            type={isShowPassword == true ? "text" : "password"}
             placeholder="Password ..."
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -67,8 +67,8 @@ const Login = () => {
           <i
             className={
               isShowPassword == true
-                ? "fa-solid fa-eye-slash"
-                : "fa-solid fa-eye"
+                ? "fa-solid fa-eye"
+                : "fa-solid fa-eye-slash"
             }
             onClick={() => setIsShowPassword(!isShowPassword)}
           ></i>
